@@ -14,6 +14,13 @@
 
     public Father(){}
 
+    public Father(String firstName, String lastName, int age, String specialSkill){
+        this.firstName = firstName;
+        this.lastName =lastName;
+        this.age = age;
+        this.specialSkill = specialSkill;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
