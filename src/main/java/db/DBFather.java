@@ -26,6 +26,7 @@ public class DBFather {
             session.close();
         }
     }
+
     public static void delete(Father father) {
         session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -39,6 +40,7 @@ public class DBFather {
             session.close();
         }
     }
+
     public static void deleteAll() {
         session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -88,10 +90,20 @@ public class DBFather {
     }
 
 
+    public static List<Father> oldFathers() {
+            session = HibernateUtil.getSessionFactory().openSession();
+            List<Father> results = null;
+            try {
+                Criteria criteria = session.createCriteria(Father.class);
+                criteria.add(Restrictions.gt("age", 40));
 
-
-}
-
-
-
+                results = criteria.list();
+            } catch (HibernateException e) {
+                e.printStackTrace();
+            } finally {
+                session.close();
+            }
+            return results;
+        }
+    }
 

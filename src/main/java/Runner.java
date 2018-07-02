@@ -1,3 +1,4 @@
+import com.sun.xml.internal.rngom.digested.DPattern;
 import db.DBFather;
 import db.DBSon;
 import models.Father;
@@ -22,6 +23,14 @@ public class Runner {
         DBSon.save(son3);
 
     List<Father> allFathers= DBFather.getAll();
+
+    List<Father> oldFathers = DBFather.oldFathers();
+
+    DBFather.delete(father2);
+
+    List <Father> listAfterOneDelete = DBFather.getAll();
+
+    Son simba = DBSon.find(son3.getId());
 
 }
 }
